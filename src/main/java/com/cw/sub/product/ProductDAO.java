@@ -18,14 +18,17 @@ public class ProductDAO {
 		return sqlSession.selectList(NAMESPACE+"getAllList");
 	}
 
+	//카테고리별 품목 list
 	public List<ProductDTO> getList(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", productDTO);
 	}
 	
+	//품목 상세 정보 보기
 	public ProductDTO getSelect(ProductDTO productDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", productDTO);
 	}
 	
+	//카테고리별 품목 갯수
 	public Long getCount(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount", productDTO);
 	}
