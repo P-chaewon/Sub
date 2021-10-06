@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.cw.sub.product.ProductDAO">
+
+  	<select id="getAllList" resultType="ProductDTO">
+  		SELECT * FROM PRODUCT
+  	</select>
+  	
+
+  	<select id="getList" parameterType="map" resultType="ProductDTO">
+		SELECT * FROM PRODUCT WHERE 
+	  		<if test="c1!=null">C1=#{c1}</if>
+	  		<if test="c2!=null">C2=#{c2}</if>
+	  		<if test="c3!=null">C3=#{c3}</if>
+  	</select>
+  	
+  	<select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">
+  		SELECT * FROM PRODUCT WHERE NUM=#{num}
+  	</select>
+  	
+  	<select id="getCount" parameterType="ProductDTO" resultType="Long">
+  		SELECT COUNT(NUM) FROM PRODUCT WHERE 
+  		<if test="c1!=null">C1=#{c1}</if>
+  		<if test="c2!=null">C2=#{c2}</if>
+  		<if test="c3!=null">C3=#{c3}</if>	
+  	</select>
+  	
+  	
+  </mapper>
