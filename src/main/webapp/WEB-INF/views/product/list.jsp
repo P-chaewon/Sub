@@ -20,8 +20,6 @@
 			<td><a href="./productView?num=${dto.num}">${dto.name}</a></td>
 			<td>${dto.price}</td>
 			<td>${dto.explain}</td>	
-			<td>${category}</td>
-			<td>${param}</td>
 		
 		</tr>
 	</c:forEach>
