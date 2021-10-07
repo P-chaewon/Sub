@@ -10,11 +10,14 @@
   	</select>
   	
 
-  	<select id="getList" parameterType="map" resultType="ProductDTO">
-		SELECT * FROM PRODUCT WHERE 
-	  		<if test="c1!=null">C1=#{c1}</if>
-	  		<if test="c2!=null">C2=#{c2}</if>
-	  		<if test="c3!=null">C3=#{c3}</if>
+  	<select id="getList" parameterType="Map" resultType="ProductDTO">
+		SELECT * FROM 
+			(SELECT ROWNUM R, P.* FROM 
+				(SELECT * FROM PRODUCT WHERE 
+	  				<if test="product.c1!=null">C1=#{product.c1}</if>
+	  				<if test="product.c2!=null">C2=#{product.c2}</if>
+	  				<if test="product.c3!=null">C3=#{product.c3}</if>) P)
+	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   	</select>
   	
   	<select id="getSelect" parameterType="ProductDTO" resultType="ProductDTO">

@@ -19,8 +19,8 @@ public class ProductDAO {
 	}
 
 	//카테고리별 품목 list
-	public List<ProductDTO> getList(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList", productDTO);
+	public List<ProductDTO> getList(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", map);
 	}
 	
 	//품목 상세 정보 보기

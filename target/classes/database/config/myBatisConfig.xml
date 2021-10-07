@@ -8,5 +8,6 @@
   	<typeAliases>
 		<typeAlias type="com.cw.sub.product.ProductDTO" alias="ProductDTO"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.util.Map" alias="Map"/>
   	</typeAliases>
   </configuration>
