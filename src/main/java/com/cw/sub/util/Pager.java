@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Pager {
+	
+	//검색
+	private String search;
 
 	private Long pn;
 	private Long perPage;
@@ -48,6 +51,17 @@ public class Pager {
 			this.lastNum = this.totalPage;
 		}
 		
+	}
+	
+	
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
 	}
 	
 	public Long getPn() {

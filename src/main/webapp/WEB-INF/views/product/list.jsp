@@ -10,9 +10,14 @@
 <body>
 <c:import url="../temp/nav.jsp"></c:import>
 <!-- search -->
-<div>
+<form action="./productList" method="get">
+	<div class="input-group mb-3">
+		<input type="hidden" name="${category}" value="${para}" >
+		<input type="text" class="form-control" placeholder="Recipient's username" name="search">
+		<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+	</div>
+</form>
 
-</div>
 <table>
 	<c:forEach items="${list}" var="dto">
 		<tr>
@@ -27,25 +32,27 @@
 <nav>
  	<ul class="pagination">
 	    <li class="page-item">
-	    	<a class="page-link first pager" href="./productList?${category}=${para}&pn=1">
+	    	<a class="page-link first pager" href="./productList?${category}=${para}&pn=1&search=${pager.search}">
 	    		<span aria-hidden="true">&laquo;</span>
 	    	</a>
 	    </li>
 	    <li class="page-item">
-	    	<a class="page-link prev pager" href="./productList?${category}=${para}&pn=${pager.startNum-1}">
+	    	<a class="page-link prev pager" href="./productList?${category}=${para}&pn=${pager.startNum-1}&search=${pager.search}">
 	    		<span aria-hidden="true">&lt;</span>
 	    	</a>
 	    </li>
 	    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
-			<li class="page-item"><a class="page-link pager" href="./productList?${category}=${para}&pn=${n}">${n}</a></li>
+			<li class="page-item">
+				<a class="page-link pager" href="./productList?${category}=${para}&pn=${n}&search=${pager.search}">${n}</a>
+			</li>
 		</c:forEach>
 	    <li class="page-item">
-		    <a class="page-link pager" href="./productList?${category}=${para}&pn=${pager.lastNum+1}">
+		    <a class="page-link pager" href="./productList?${category}=${para}&pn=${pager.lastNum+1}&search=${pager.search}">
 		    	<span aria-hidden="true">&gt;</span>
 		    </a>
 	    </li>
 	    <li class="page-item">
-		    <a class="page-link pager last" href="./productList?${category}=${para}&pn=${pager.totalPage}">
+		    <a class="page-link pager last" href="./productList?${category}=${para}&pn=${pager.totalPage}&search=${pager.search}">
 		    	<span aria-hidden="true">&raquo;</span>
 		    </a>
 	    </li>
