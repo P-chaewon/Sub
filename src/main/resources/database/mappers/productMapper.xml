@@ -16,7 +16,8 @@
 				(SELECT * FROM PRODUCT WHERE 
 	  				<if test="product.c1!=null">C1=#{product.c1}</if>
 	  				<if test="product.c2!=null">C2=#{product.c2}</if>
-	  				<if test="product.c3!=null">C3=#{product.c3}</if>) P)
+	  				<if test="product.c3!=null">C3=#{product.c3}</if>
+	  				AND NAME LIKE '%' || #{pager.search} || '%') P)
 	  	WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   	</select>
   	
@@ -24,11 +25,12 @@
   		SELECT * FROM PRODUCT WHERE NUM=#{num}
   	</select>
   	
-  	<select id="getCount" parameterType="ProductDTO" resultType="Long">
+  	<select id="getCount" parameterType="Map" resultType="Long">
   		SELECT COUNT(NUM) FROM PRODUCT WHERE 
-  		<if test="c1!=null">C1=#{c1}</if>
-  		<if test="c2!=null">C2=#{c2}</if>
-  		<if test="c3!=null">C3=#{c3}</if>	
+  		<if test="product.c1!=null">C1=#{product.c1}</if>
+  		<if test="product.c2!=null">C2=#{product.c2}</if>
+  		<if test="product.c3!=null">C3=#{product.c3}</if>	
+  		AND NAME LIKE '%' || #{pager.search} || '%'
   	</select>
   	
   	

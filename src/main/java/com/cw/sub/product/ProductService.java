@@ -19,12 +19,12 @@ public class ProductService {
 	}
 
 	public List<ProductDTO> getList(ProductDTO productDTO, Pager pager) throws Exception{
-		Long totalCount = productDAO.getCount(productDTO);
-		pager.makeNum(totalCount);
-		pager.makeRow();
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("product", productDTO);
 		map.put("pager", pager);
+		Long totalCount = productDAO.getCount(map);
+		pager.makeNum(totalCount);
+		pager.makeRow();
 		
 		return productDAO.getList(map);
 	}

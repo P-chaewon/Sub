@@ -29,7 +29,7 @@ public class ProductDAO {
 	}
 	
 	//카테고리별 품목 갯수
-	public Long getCount(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getCount", productDTO);
+	public Long getCount(Map<String, Object> map) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCount", map);
 	}
 }
